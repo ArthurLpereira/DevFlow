@@ -1,0 +1,46 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+}
+
+enum TarefasStatus{
+a_fazer
+em_andamento
+fazendo
+pronto
+}
+
+enum TarefasPrioridade {
+    urgente
+    alta
+    media
+    baixa
+}
+
+model Categoria {
+    id Int @id @default(autoincrement())
+    nome String @unique
+
+    tarefas Tarefas[]
+
+    createdAt DateTime @default(now())
+}
+
+model Tarefas {
+    id Int @id @default(autoincrement())
+    nome String
+    descricao String?
+    status TarefasStatus @default(a_fazer)
+    prioridade TarefasPrioridade @default(media)
+    estimativa DateTime?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    completedAt DateTime?
+
+    categoriaId Int?
+    categoria Categoria? @relation(fields: [categoriaId], references: [id])
+}
