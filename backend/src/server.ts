@@ -1,10 +1,9 @@
 import Fastify from 'fastify'
+import { Tarefas } from './routes/tarefas.routes'
 
 const app = Fastify({ logger: true })
 
-app.get('/health', async () => {
-    return { status: 'ok', message: 'DevFlow API rodando 🚀' }
-})
+app.register(Tarefas);
 
 const start = async () => {
     try {
