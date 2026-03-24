@@ -1,6 +1,6 @@
 import { TarefasStatus, TarefasPrioridade } from "@prisma/client";
 
-export type PostTarefas = {
+export type TypesTarefas = {
     nome: string;
     descricao?: string;
     status: TarefasStatus;
@@ -9,3 +9,4 @@ export type PostTarefas = {
     categoriaId?: number;
 }
 
+export type PatchTarefas = Partial<TypesTarefas>;

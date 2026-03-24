@@ -1,11 +1,11 @@
 import { FastifyInstance } from "fastify";
-import type { PostTarefas } from "../types/tarefas.types";
+import { BuscarTarefaId, BuscarTarefas, CriarTarefa, DeleteTarefa, PatchTarefa } from "../controllers/tarefas.controller";
 
 export async function Tarefas(app: FastifyInstance) {
 
-    app.post<{ Body: PostTarefas }>('/tarefas', async (request, reply) => {
-        const { nome, descricao, status, prioridade, estimativa, categoriaId } = request.body;
-
-        return reply.status(200).send({ message: 'Criado' })
-    });
+    app.post('/tarefas', CriarTarefa);
+    app.get('/tarefas', BuscarTarefas);
+    app.get('/tarefas/:id', BuscarTarefaId);
+    app.patch('/tarefas/:id', PatchTarefa);
+    app.delete('/tarefas/:id', DeleteTarefa);
 }
