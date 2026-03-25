@@ -1,9 +1,11 @@
 import Fastify from 'fastify'
 import { Tarefas } from './routes/tarefas.routes'
+import { Categorias } from './routes/categorias.routes';
 
 const app = Fastify({ logger: true })
 
 app.register(Tarefas);
+app.register(Categorias);
 
 const start = async () => {
     try {
