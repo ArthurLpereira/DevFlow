@@ -17,7 +17,11 @@ export async function criarTarefas(dados: TypesTarefas) {
 }
 
 export async function buscarTarefas() {
-    const resultado = await prisma.tarefas.findMany();
+    const resultado = await prisma.tarefas.findMany({
+        include: {
+            categoria: true
+        }
+    });
     return resultado;
 }
 
@@ -25,6 +29,9 @@ export async function buscarTarefasId(id: number) {
     const resultado = await prisma.tarefas.findUnique({
         where: {
             id: id
+        },
+        include: {
+            categoria: true
         }
     })
 
