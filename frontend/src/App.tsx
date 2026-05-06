@@ -28,7 +28,6 @@ function App() {
   useEffect(() => {
     async function carregarDados() {
       try {
-        // Busca tarefas e categorias em paralelo
         const [resTarefas, resCategorias] = await Promise.all([
           api.get<{ data: Tarefa[] }>("/tarefas"),
           api.get<{ data: Categoria[] }>("/categorias"),
@@ -117,7 +116,6 @@ function App() {
     try {
       await api.patch(`/tarefas/${id}`, dados);
 
-      // Busca o objeto da categoria atualizada para manter o campo `categoria` correto no estado
       const categoriaAtualizada = dados.categoriaId
         ? categorias.find(c => c.id === dados.categoriaId) ?? null
         : null;
@@ -135,21 +133,17 @@ function App() {
     }
   }, [categorias]);
 
-  // Callback chamado pelo CategoriaManager quando a lista de categorias muda
   const handleCategoriasChange = useCallback((novasCategorias: Categoria[]) => {
     setCategorias(novasCategorias);
 
-    // Atualiza as tarefas que referenciam categorias que podem ter sido renomeadas ou removidas
     setColunas(prev => prev.map(col => ({
       ...col,
       tarefas: col.tarefas.map(t => {
         if (!t.categoriaId) return t;
         const catAtualizada = novasCategorias.find(c => c.id === t.categoriaId);
         if (!catAtualizada) {
-          // Categoria foi deletada
           return { ...t, categoriaId: null, categoria: undefined };
         }
-        // Categoria pode ter sido renomeada
         return { ...t, categoria: catAtualizada };
       }),
     })));
@@ -182,7 +176,6 @@ function App() {
   return (
     <div className="flex flex-col h-screen">
 
-      {/* Header */}
       <header className="flex items-center gap-3 px-6 py-4 border-b border-[#30363d] bg-[#161b22] flex-shrink-0">
         <div className="w-7 h-7 rounded-md bg-indigo-500 flex items-center justify-center">
           <span className="text-white text-xs font-bold">DF</span>
