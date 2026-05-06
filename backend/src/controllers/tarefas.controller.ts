@@ -27,10 +27,6 @@ export async function BuscarTarefas(request: FastifyRequest, reply: FastifyReply
     try {
         const data = await buscarTarefas();
 
-        if (data.length === 0) {
-            return reply.status(404).send({ message: "Não existe tarefas criadas" });
-        }
-
         return reply.status(200).send({ data: data });
     } catch (erro) {
         console.error(erro)

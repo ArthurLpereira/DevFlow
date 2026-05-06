@@ -29,11 +29,6 @@ export async function CriarCategoria(request: FastifyRequest<{ Body: tipoCategor
 export async function BuscarCategorias(request: FastifyRequest, reply: FastifyReply) {
     try {
         const data = await buscarCategorias();
-
-        if (data.length === 0) {
-            return reply.status(404).send({ message: "Não foi encontrada nenhuma categoria" })
-        }
-
         return reply.status(200).send({ data: data });
     } catch (erro) {
         console.error(erro);

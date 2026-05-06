@@ -12,18 +12,25 @@ export interface Tarefa {
     descricao?: string
     status: TarefasStatus,
     prioridade: TarefasPrioridade,
-    estimativa?: Date,
+    estimativa?: string | null,
 
-    CategoriaId: number,
+    categoriaId: number | null,
     categoria?: Categoria
 }
+
+// Dados usados no formulário de edição
+export type TarefaEditData = Pick<Tarefa, 'id' | 'nome' | 'descricao' | 'prioridade' | 'categoriaId'>;
 
 export interface Coluna {
     id: number,
     titulo: string,
+    status: TarefasStatus,
     tarefas: Tarefa[]
 }
 
 export interface BoardProps {
-    colunas: Coluna[]
+    colunas: Coluna[];
+    onStatusChange: (id: number, novoStatus: TarefasStatus) => void;
+    onDelete: (id: number) => void;
+    onEdit: (dados: TarefaEditData) => void;
 }

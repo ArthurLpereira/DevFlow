@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0d1117;
+  color: #e6edf3;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Column accent bar (cor por status) ── */
+.col-accent-a_fazer      { background: #6366f1; }
+.col-accent-em_andamento { background: #f59e0b; }
+.col-accent-fazendo      { background: #3b82f6; }
+.col-accent-pronto       { background: #10b981; }
+
+/* ── Column task count badge (cor por status) ── */
+.col-count-a_fazer      { background: rgba(99,  102, 241, 0.15); color: #818cf8; }
+.col-count-em_andamento { background: rgba(245, 158,  11, 0.15); color: #fbbf24; }
+.col-count-fazendo      { background: rgba(59,  130, 246, 0.15); color: #60a5fa; }
+.col-count-pronto       { background: rgba(16,  185, 129, 0.15); color: #34d399; }
+
+/* ── Custom scrollbar for card lists & category list ── */
+.column-cards::-webkit-scrollbar,
+.categoria-list::-webkit-scrollbar       { width: 4px; }
+.column-cards::-webkit-scrollbar-track,
+.categoria-list::-webkit-scrollbar-track { background: transparent; }
+.column-cards::-webkit-scrollbar-thumb,
+.categoria-list::-webkit-scrollbar-thumb { background: #30363d; border-radius: 2px; }
