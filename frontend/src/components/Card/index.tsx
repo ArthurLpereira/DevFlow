@@ -11,7 +11,7 @@ const priorityConfig = {
 const statusLabels: Record<TarefasStatus, string> = {
     a_fazer:      "A Fazer",
     em_andamento: "Em Andamento",
-    fazendo:      "Fazendo",
+    fazendo:      "Revisão",
     pronto:       "Pronto",
 };
 

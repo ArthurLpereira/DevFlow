@@ -10,7 +10,7 @@ import api from "./services/api";
 const COLUNAS_CONFIG: { id: number; titulo: string; status: TarefasStatus }[] = [
   { id: 1, titulo: "A Fazer", status: "a_fazer" },
   { id: 2, titulo: "Em Andamento", status: "em_andamento" },
-  { id: 3, titulo: "Fazendo", status: "fazendo" },
+  { id: 3, titulo: "Revisão", status: "fazendo" },
   { id: 4, titulo: "Pronto", status: "pronto" },
 ];
 

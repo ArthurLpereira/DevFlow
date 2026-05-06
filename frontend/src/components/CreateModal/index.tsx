@@ -11,7 +11,7 @@ interface CreateModalProps {
 const statusOptions: { value: TarefasStatus; label: string }[] = [
     { value: "a_fazer",      label: "A Fazer"      },
     { value: "em_andamento", label: "Em Andamento" },
-    { value: "fazendo",      label: "Fazendo"      },
+    { value: "fazendo",      label: "Revisão"      },
     { value: "pronto",       label: "Pronto"       },
 ];
 
